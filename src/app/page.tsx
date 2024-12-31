@@ -8,14 +8,9 @@ import { useEffect } from "react";
 export default function Home() {
   const { activeTab } = useNavigation();
 
-  // Debug logging
-  useEffect(() => {
-    console.log("Active tab changed:", activeTab);
-  }, [activeTab]);
+  useEffect(() => {}, [activeTab]);
 
   const renderContent = () => {
-    console.log("Rendering content for tab:", activeTab);
-    
     switch (activeTab) {
       case "info":
         return <InfoPage />;

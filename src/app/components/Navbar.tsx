@@ -1,4 +1,3 @@
-// components/Navbar.tsx
 "use client";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
@@ -7,6 +6,7 @@ import { useNavigation } from "../context/NavigationContext";
 const Navbar = () => {
   const { activeTab, setActiveTab } = useNavigation();
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isExpanded, setIsExpanded] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,6 +15,8 @@ const Navbar = () => {
       const currentProgress = window.scrollY;
       const progress = (currentProgress / scrollHeight) * 100 || 0;
       setScrollProgress(Math.min(progress, 100));
+
+      setIsExpanded(progress < 2);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -37,33 +39,65 @@ const Navbar = () => {
         <p className="text-zinc-400">Software Developer</p>
       </div>
 
-      <div className="absolute left-1/2 -translate-x-1/2 bg-zinc-800 rounded-full p-1 border border-white group">
-        <div className="relative flex items-center">
-          <Image
-            src="/arrow-icon.png"
-            width={50}
-            height={10}
-            alt="Left arrow"
-            style={{ transform: "scaleX(-1)" }}
-            className="object-contain"
-          />
-          <div className="overflow-hidden w-0 group-hover:w-[300px] transition-all duration-300 ease-in-out">
-            <div className="flex gap-3 px-3 whitespace-nowrap">
+      <div
+        className={`absolute left-1/2 -translate-x-1/2 bg-zinc-800 rounded-full p-1 border border-white ${
+          !isExpanded ? "group" : ""
+        }`}
+      >
+        <div
+          className={`relative grid ${
+            isExpanded
+              ? "grid-cols-[50px_300px_50px]"
+              : "grid-cols-[50px_0px_50px] group-hover:grid-cols-[50px_300px_50px]"
+          } items-center transition-all duration-300`}
+        >
+          <div className="flex items-center justify-center w-[50px]">
+            <Image
+              src="/arrow-icon.png"
+              width={40}
+              height={10}
+              alt="Left arrow"
+              style={{ transform: "scaleX(-1)" }}
+              className="object-contain"
+            />
+          </div>
+
+          <div className="overflow-hidden">
+            <div className="grid grid-cols-3 gap-0 relative whitespace-nowrap">
+              {/* Background slider */}
+              <div
+                className="absolute h-[34px] bg-zinc-700 rounded-full transition-all duration-300 ease-in-out mt-2 border-white"
+                style={{
+                  width: "100px",
+                  left: `${tabs.indexOf(activeTab) * 100}px`,
+                }}
+              />
+
+              {/* Navigation buttons */}
               {tabs.map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`px-6 py-2 rounded-full transition-all text-white ${
-                    activeTab === tab ? "bg-zinc-700" : "hover:bg-zinc-700"
-                  }`}
+                  className="px-4 py-3 rounded-full transition-all text-md text-white z-10 w-[100px] text-center"
                 >
                   {tab.charAt(0).toUpperCase() + tab.slice(1)}
                 </button>
               ))}
             </div>
+
+            {/* Gradient backgrounds */}
+            {activeTab === "info" && (
+              <div className="absolute -inset-1 bg-gradient-to-r from-zinc-600 via-zinc-800 to-zinc-800 blur-xl -z-10" />
+            )}
+            {activeTab === "work" && (
+              <div className="absolute -inset-1 bg-gradient-to-r from-zinc-800 via-zinc-600 to-zinc-800 blur-xl -z-10" />
+            )}
+            {activeTab === "projects" && (
+              <div className="absolute -inset-1 bg-gradient-to-r from-zinc-800 via-zinc-800 to-zinc-600 blur-xl -z-10" />
+            )}
           </div>
 
-          <div className="w-12 h-12 flex items-center justify-center ml-3">
+          <div className="flex items-center justify-center w-[50px]">
             <svg
               height={radius * 2}
               width={radius * 2}
@@ -78,7 +112,7 @@ const Navbar = () => {
                 cy={radius}
               />
               <circle
-                stroke="white"
+                stroke="#a3e635"
                 fill="transparent"
                 strokeWidth={strokeWidth}
                 strokeDasharray={circumference + " " + circumference}
@@ -90,12 +124,6 @@ const Navbar = () => {
               />
             </svg>
           </div>
-
-          {tabs.map((tab) => (
-            activeTab === tab && (
-              <div key={tab} className={`absolute -inset-1 bg-gradient-to-r from-zinc-${tab === 'info' ? '600' : '800'} via-zinc-${tab === 'work' ? '600' : '800'} to-zinc-${tab === 'projects' ? '600' : '800'} blur-xl -z-10`} />
-            )
-          ))}
         </div>
       </div>
 

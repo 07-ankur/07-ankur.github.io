@@ -1,6 +1,30 @@
 import React from "react";
 import Image from "next/image";
 import { LuActivity } from "react-icons/lu";
+import {
+  SiCplusplus,
+  SiJavascript,
+  SiTypescript,
+  SiPython,
+  SiGit,
+  SiGithub,
+  SiPostman,
+  SiReact,
+  SiNodedotjs,
+  SiExpress,
+  SiMongodb,
+  SiFirebase,
+  SiJest,
+  SiMysql,
+  SiPostgresql,
+  SiPrisma,
+  SiSocketdotio,
+  SiTailwindcss,
+  SiSass,
+  SiNextdotjs,
+  SiMui,
+} from "react-icons/si";
+import { VscVscode } from "react-icons/vsc";
 
 interface ExperienceProps {
   logo: string;
@@ -34,12 +58,11 @@ const ExperienceItem: React.FC<ExperienceProps> = ({
       {/* Experience Details */}
       <div className="space-y-4">
         <div className="flex items-center gap-6">
-          {/* Fixed size container for logo */}
-          <div className="w-[60px] h-[60px] flex items-center justify-center flex-shrink-0">
+          <div className="w-[80px] h-[80px] flex items-center justify-center flex-shrink-0">
             <Image
               src={logo}
-              width={60}
-              height={60}
+              width={80}
+              height={80}
               alt={`${company} Logo`}
               className="object-contain w-full h-full"
             />
@@ -55,7 +78,6 @@ const ExperienceItem: React.FC<ExperienceProps> = ({
           <div className="text-zinc-300 text-lg">
             {extraInfo.map((item, index) => (
               <div key={index} className="flex items-start gap-3 mb-2">
-                {/* Fixed size container for icon */}
                 <div className="w-6 h-6 flex items-center justify-center flex-shrink-0">
                   <LuActivity className="w-5 h-5 text-lime-500" />
                 </div>
@@ -69,19 +91,87 @@ const ExperienceItem: React.FC<ExperienceProps> = ({
   );
 };
 
+interface SkillCategoryProps {
+  title: string;
+  skills: {
+    name: string;
+    icon: React.ReactNode;
+  }[];
+}
+
+const SkillCategory: React.FC<SkillCategoryProps> = ({ title, skills }) => {
+  return (
+    <div className="space-y-4">
+      <h3 className="text-xl font-light text-stone-300">{title}</h3>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {skills.map((skill, index) => (
+          <div
+            key={index}
+            className="flex items-center gap-3 p-3 rounded-lg bg-zinc-800/50 border border-zinc-700/50 hover:border-lime-400/50 transition-all group"
+          >
+            <div className="text-2xl text-lime-400 group-hover:scale-110 transition-transform">
+              {skill.icon}
+            </div>
+            <span className="text-zinc-300">{skill.name}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const WorkPage: React.FC = () => {
+  const skillCategories = [
+    {
+      title: "Languages",
+      skills: [
+        { name: "C/C++", icon: <SiCplusplus /> },
+        { name: "JavaScript", icon: <SiJavascript /> },
+        { name: "TypeScript", icon: <SiTypescript /> },
+        { name: "Python", icon: <SiPython /> },
+      ],
+    },
+    {
+      title: "Developer Tools",
+      skills: [
+        { name: "Git", icon: <SiGit /> },
+        { name: "GitHub", icon: <SiGithub /> },
+        { name: "VS Code", icon: <VscVscode /> },
+        { name: "Postman", icon: <SiPostman /> },
+      ],
+    },
+    {
+      title: "Technologies/Frameworks",
+      skills: [
+        { name: "React", icon: <SiReact /> },
+        { name: "Node.js", icon: <SiNodedotjs /> },
+        { name: "Express", icon: <SiExpress /> },
+        { name: "MongoDB", icon: <SiMongodb /> },
+        { name: "Next.js", icon: <SiNextdotjs /> },
+        { name: "Firebase", icon: <SiFirebase /> },
+        { name: "Jest", icon: <SiJest /> },
+        { name: "MySQL", icon: <SiMysql /> },
+        { name: "PostgreSQL", icon: <SiPostgresql /> },
+        { name: "Prisma", icon: <SiPrisma /> },
+        { name: "Socket.io", icon: <SiSocketdotio /> },
+        { name: "Tailwind", icon: <SiTailwindcss /> },
+        { name: "Material UI", icon: <SiMui /> },
+        { name: "Sass", icon: <SiSass /> },
+      ],
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-zinc-900 text-white p-4">
       <main className="max-w-4xl mx-auto relative">
         {/* Skills Section */}
         <section className="space-y-8 mb-24">
           <div className="relative">
-            {/* Gradient Overlays */}
             <div className="absolute -inset-6 bg-gradient-to-r from-zinc-900 via-zinc-800 to-zinc-900 blur-xl opacity-70" />
             <div className="absolute -inset-12 bg-gradient-to-r from-zinc-900 via-zinc-800 to-zinc-900 blur-2xl opacity-50" />
 
             <div className="relative z-10">
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-3 mb-6">
                 <div className="relative w-2 h-2">
                   <div className="absolute inset-0 rounded-full bg-white" />
                   <div className="absolute inset-0 rounded-full bg-white blur-sm" />
@@ -90,30 +180,25 @@ const WorkPage: React.FC = () => {
                 </div>
                 <p className="text-lg text-stone-400">SKILLS</p>
               </div>
-              <h2 className="text-4xl font-light leading-tight tracking-tight mb-4">
-                I&apos;m driven by the passion for crafting impactful products
-                that enhance user experiences and{" "}
-                <span className="italic text-transparent bg-clip-text bg-gradient-to-t from-cyan-100 to-zinc-100">
-                  solve real-world challenges.
-                </span>
-              </h2>
-              <p className="text-lg text-zinc-300 leading-tight tracking-tight mb-4">
-                Hi there! 👋 I&apos;m a passionate Software Developer and a
-                final-year B.Tech student at the Indian Institute of Information
-                Technology (IIIT) Ranchi. 🎓
-              </p>
-              <p className="text-lg text-zinc-300 leading-tight tracking-tight mb-4">
-                I enjoy diving into code, crafting seamless web applications,
-                and exploring innovative solutions. Beyond the keyboard,
-                you&apos;ll often find me binge-watching cinema 🍿 or
-                strategizing over a chessboard ♟️.
-              </p>
-              <p className="text-lg text-zinc-300 leading-tight tracking-tight mb-4">
-                I&apos;m eager to collaborate with dynamic teams, embrace new
-                challenges, and grow alongside like-minded individuals. And hey,
-                I believe a bit of humor can brighten any workspace—because who
-                doesn&apos;t love a good laugh? 😊
-              </p>
+              <div className="mb-8 ml-5">
+                <p className="text-xl text-zinc-300 leading-relaxed">
+                  Over the years, I have honed my skills in a wide range of
+                  programming languages, developer tools, and modern
+                  technologies. Here&apos;s a glimpse of the technologies that power my
+                  journey.
+                </p>
+              </div>
+
+              {/* Skills Categories */}
+              <div className="space-y-8 ml-5">
+                {skillCategories.map((category, index) => (
+                  <SkillCategory
+                    key={index}
+                    title={category.title}
+                    skills={category.skills}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </section>
