@@ -20,7 +20,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@types/node": "^20",
-    "@types/react": "18.2.45",
+    "@types/react": "^19.0.0",
     "@types/react-dom": "^19",
     "@types/react-icons": "^2.2.7",
     "eslint": "^9",
