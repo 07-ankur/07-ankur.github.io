@@ -44,7 +44,7 @@ const EducationItem: React.FC<EducationProps> = ({
           </div>
           <h4 className="text-4xl font-light text-zinc-100">{institution}</h4>
         </div>
-        <div className="pl-[96px]">
+        <div className="pl-[96px]" style={{ textShadow: "0px 0px 1px black" }}>
           <h4 className="text-2xl mb-1 text-stone-300">{degree}</h4>
           <p className="text-zinc-400 mb-3">{date}</p>
           <div className="text-zinc-300 text-lg">
@@ -90,16 +90,27 @@ export default function InfoPage() {
                   <div className="absolute -inset-2 rounded-full bg-white/20 blur-md" />
                   <div className="absolute -inset-3 rounded-full bg-white/10 blur-lg" />
                 </div>
-                <p className="text-lg text-zinc-400">ABOUT ME</p>
+                <p
+                  className="text-lg text-zinc-400"
+                  style={{ textShadow: "0px 2px 2px black" }}
+                >
+                  ABOUT ME
+                </p>
               </div>
-              <h2 className="text-4xl font-light leading-tight tracking-tight mb-4">
+              <h2
+                className="text-4xl font-light leading-tight tracking-tight mb-4"
+                style={{ textShadow: "0px 2px 2px black" }}
+              >
                 I&apos;m driven by the passion for crafting impactful products
                 that enhance user experiences and{" "}
-                <span className="italic text-transparent bg-clip-text bg-gradient-to-t from-stone-600 to-zinc-100">
+                <span
+                  className="italic text-transparent bg-clip-text bg-gradient-to-t from-stone-600 to-zinc-100"
+                  style={{ textShadow: "0px 0px 0px transparent" }}
+                >
                   solve real-world challenges.
                 </span>
               </h2>
-              <div className="relative flex items-center justify-between max-w-2xl mx-auto rounded-full bg-zinc-900/50 border border-stone-500 p-3 backdrop-blur-sm my-10 group transition-all hover:border-[#e1ff00]/50">
+              <div className="relative flex items-center justify-between max-w-2xl mx-auto rounded-full bg-zinc-900/50 border border-stone-500 p-3 backdrop-blur-sm my-10 group transition-all hover:border-[#e1ff00]/80">
                 <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#e1ff00]/0 via-[#e1ff00]/5 to-[#e1ff00]/0 opacity-0 group-hover:opacity-100 blur-lg transition-all duration-500" />
                 <div className="flex flex-col mx-3 relative">
                   <div className="text-xs text-stone-400">Connect with me:</div>
@@ -152,28 +163,41 @@ export default function InfoPage() {
                   />
                 </svg>
               </div>
-              <div id="container" className="mt-20">
-                <h6 className="text-3xl text-stone-300 leading-tight tracking-tight mb-4">
-                  Hi there! 👋 I&apos;m a passionate Software Developer and a
-                  final-year B.Tech student at the Indian Institute of
-                  Information Technology (IIIT) Ranchi🎓.
-                </h6>
-                <h6 className="text-3xl text-stone-300 leading-tight tracking-tight mb-4">
-                  I enjoy diving into code, crafting seamless web applications,
-                  and exploring innovative solutions. Beyond the keyboard,
-                  you&apos;ll often find me lost in thought, strategizing over a
-                  chessboard♟️, binge-watching cinema🍿, solving challenging
-                  sudokus, or playing mobile games🎮.
-                </h6>
-                <h6 className="text-3xl text-stone-300 leading-tight tracking-tight mb-4">
-                  I&apos;m eager to collaborate with dynamic teams, embrace new
-                  challenges, and grow alongside like-minded individuals. And
-                  hey, I believe a bit of humor can brighten any workspace —
-                  because who doesn&apos;t love a good laugh? 😊
-                </h6>
-                <h6 className="text-3xl text-zinc-300 leading-tight tracking-tight mb-4">
-                  - - - Thanks for stopping by !
-                </h6>
+              <div className="grid gap-16 mt-32">
+                {/* Main content with enhanced typography and spacing */}
+                <div className="space-y-12 text-2xl text-zinc-400 leading-relaxed">
+                  <p className="max-w-4xl">
+                    Hi there! 👋 I&apos;m a passionate Software Developer and a
+                    final-year B.Tech student at the Indian Institute of
+                    Information Technology (IIIT) Ranchi🎓.
+                  </p>
+
+                  <p className="max-w-4xl">
+                    Though I loved the freedom of academic practice, I was
+                    greatly dissatisfied with just how slow the industry
+                    actually moved. I wanted to push my design craft at a faster
+                    pace and have a positive impact on vastly more people.
+                  </p>
+
+                  <p className="max-w-4xl">
+                    I enjoy diving into code, crafting seamless web
+                    applications, and exploring innovative solutions. Beyond the
+                    keyboard, you&apos;ll often find me lost in thought,
+                    strategizing over a chessboard♟️, binge-watching cinema🍿,
+                    solving challenging sudokus, or playing mobile games🎮.
+                  </p>
+
+                  <p className="max-w-4xl">
+                    I&apos;m eager to collaborate with dynamic teams, embrace
+                    new challenges, and grow alongside like-minded individuals.
+                    And hey, I believe a bit of humor can brighten any workspace
+                    — because who doesn&apos;t love a good laugh? 😊
+                  </p>
+
+                  <p className="text-3xl font-light text-zinc-300">
+                    - - - Thanks for stopping by!
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -201,7 +225,7 @@ export default function InfoPage() {
             <div className="space-y-16">
               {/* IIIT Ranchi */}
               <EducationItem
-                logo="/IIITRanchi_logo.png"
+                logo="/IIITRanchi_logo.webp"
                 institution="Indian Institute of Information Technology (IIIT), Ranchi"
                 degree="Bachelor of Technology in Electronics and Communication Engineering (ES & IOT)"
                 date="Dec 2021 – Present"

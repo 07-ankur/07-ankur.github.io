@@ -178,10 +178,10 @@ const WorkPage: React.FC = () => {
                   <div className="absolute -inset-2 rounded-full bg-white/20 blur-md" />
                   <div className="absolute -inset-3 rounded-full bg-white/10 blur-lg" />
                 </div>
-                <p className="text-lg text-stone-400">SKILLS</p>
+                <p className="text-lg text-stone-400" style={{textShadow:'0px 2px 2px black'}}>SKILLS</p>
               </div>
               <div className="mb-8 ml-5">
-                <p className="text-xl text-zinc-300 leading-relaxed">
+                <p className="text-xl text-zinc-300 leading-relaxed" style={{textShadow:'0px 2px 2px black'}}>
                   Over the years, I have honed my skills in a wide range of
                   programming languages, developer tools, and modern
                   technologies. Here&apos;s a glimpse of the technologies that power my

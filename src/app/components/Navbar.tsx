@@ -40,7 +40,7 @@ const Navbar = () => {
       </div>
 
       <div
-        className={`absolute left-1/2 -translate-x-1/2 bg-zinc-800 rounded-full p-1 border border-white ${
+        className={`absolute left-1/2 -translate-x-1/2 bg-transparent rounded-full p-1 border border-stone-600 ${
           !isExpanded ? "group" : ""
         }`}
       >
@@ -66,10 +66,12 @@ const Navbar = () => {
             <div className="grid grid-cols-3 gap-0 relative whitespace-nowrap">
               {/* Background slider */}
               <div
-                className="absolute h-[34px] bg-zinc-700 rounded-full transition-all duration-300 ease-in-out mt-2 border-white"
+                className="absolute h-[34px] bg-transparent rounded-full transition-all duration-300 ease-in-out mt-2 border-white"
                 style={{
-                  width: "100px",
-                  left: `${tabs.indexOf(activeTab) * 100}px`,
+                  width: "90px",
+                  left: `${tabs.indexOf(activeTab) * 100+5}px`,
+                  borderTop: "1px solid grey",
+                  borderBottom: "1px solid grey",
                 }}
               />
 
@@ -87,13 +89,13 @@ const Navbar = () => {
 
             {/* Gradient backgrounds */}
             {activeTab === "info" && (
-              <div className="absolute -inset-1 bg-gradient-to-r from-zinc-600 via-zinc-800 to-zinc-800 blur-xl -z-10" />
+              <div className="absolute -inset-1 bg-gradient-to-r from-zinc-500 via-zinc-800 to-zinc-800 blur-xl -z-10" />
             )}
             {activeTab === "work" && (
-              <div className="absolute -inset-1 bg-gradient-to-r from-zinc-800 via-zinc-600 to-zinc-800 blur-xl -z-10" />
+              <div className="absolute -inset-1 bg-gradient-to-r from-zinc-800 via-zinc-500 to-zinc-800 blur-xl -z-10" />
             )}
             {activeTab === "projects" && (
-              <div className="absolute -inset-1 bg-gradient-to-r from-zinc-800 via-zinc-800 to-zinc-600 blur-xl -z-10" />
+              <div className="absolute -inset-1 bg-gradient-to-r from-zinc-800 via-zinc-800 to-zinc-500 blur-xl -z-10" />
             )}
           </div>
 
@@ -104,7 +106,7 @@ const Navbar = () => {
               className="rotate-[-90deg]"
             >
               <circle
-                stroke="#79808a"
+                stroke="#A3A3A6"
                 fill="transparent"
                 strokeWidth={strokeWidth}
                 r={normalizedRadius}
