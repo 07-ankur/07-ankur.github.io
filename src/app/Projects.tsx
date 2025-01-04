@@ -5,6 +5,7 @@ import AdditionalProjectCard from "./components/Projects/AdditionalProjectCard";
 
 const Projects = () => {
   const [scrolling, setScrolling] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
