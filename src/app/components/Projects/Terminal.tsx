@@ -34,7 +34,7 @@ const TypewriterText: React.FC<TypewriterProps> = ({ text, delay, onComplete }) 
   return <span>{currentText}</span>;
 };
 
-const Tooltip: React.FC<TooltipProps> = ({ show, position = "left", children }) => {
+const Tooltip: React.FC<TooltipProps> = ({ show, position = "center", children }) => {
   if (!show) return null;
 
   const positionClass = position === "right" 
@@ -98,7 +98,7 @@ const TerminalContent = () => {
 };
 
 const Terminal = () => {
-  const [hoveredIcon, setHoveredIcon] = useState(null);
+  const [hoveredIcon, setHoveredIcon] = useState<number | null>(null);
   const [messageIndex, setMessageIndex] = useState(0);
   
   const messages = [
@@ -111,7 +111,7 @@ const Terminal = () => {
     "I'm done, keep trying I am not even responding now.",
   ];
 
-  const handleIconHover = (iconIndex) => {
+  const handleIconHover = (iconIndex: number) => {
     if (hoveredIcon !== iconIndex) {
       setHoveredIcon(iconIndex);
       setMessageIndex((prev) => (prev < messages.length - 1 ? prev + 1 : prev));
