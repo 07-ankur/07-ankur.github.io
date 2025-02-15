@@ -164,6 +164,14 @@ const Projects = () => {
             </p>
           </div>
           <AdditionalProjectCard
+            title="Game of Life"
+            description="The Game of Life, also known as Conway's Game of Life or simply Life, is a cellular automato zero-player game, meaning that its evolution is determined by its initial state, requiring no further input. One interacts with the Game of Life by creating an initial configuration and observing how it evolves."
+            language="Javascript"
+            codeUrl="https://github.com/07-ankur/GameOfLife"
+            hasWebsite
+            websiteUrl="https://gameoflife-in.vercel.app/"
+          />
+          <AdditionalProjectCard
             title="Save The Meal"
             description="A Food Rescue and Redistribution System designed to minimize food waste and fight hunger by connecting surplus food donors with volunteers and NGOs."
             language="Javascript"

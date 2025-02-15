@@ -186,7 +186,7 @@ export default function InfoPage() {
                 institution="Indian Institute of Information Technology (IIIT), Ranchi"
                 degree="Bachelor of Technology in Electronics and Communication Engineering (ES & IOT)"
                 date="Dec 2021 – Present"
-                extraInfo={["CGPA - 8.78"]}
+                extraInfo={["CGPA - 8.79"]}
               />
 
               {/* DPS Ranchi */}

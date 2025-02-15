@@ -1,9 +1,26 @@
 import React from "react";
 import {
-  SiCplusplus, SiJavascript, SiTypescript, SiPython, SiGit, SiGithub,
-  SiPostman, SiReact, SiNodedotjs, SiExpress, SiMongodb, SiFirebase,
-  SiJest, SiMysql, SiPostgresql, SiPrisma, SiSocketdotio, SiTailwindcss,
-  SiSass, SiNextdotjs, SiMui,
+  SiCplusplus,
+  SiJavascript,
+  SiTypescript,
+  SiPython,
+  SiGit,
+  SiGithub,
+  SiPostman,
+  SiReact,
+  SiNodedotjs,
+  SiExpress,
+  SiMongodb,
+  SiFirebase,
+  SiJest,
+  SiMysql,
+  SiPostgresql,
+  SiPrisma,
+  SiSocketdotio,
+  SiTailwindcss,
+  SiSass,
+  SiNextdotjs,
+  SiMui,
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 import ExperienceItem from "./components/Work/ExperienceItem";
@@ -29,7 +46,9 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({ title, skills }) => {
             <div className="text-xl sm:text-2xl text-lime-400 group-hover:scale-110 transition-transform">
               {skill.icon}
             </div>
-            <span className="text-sm sm:text-base text-zinc-300">{skill.name}</span>
+            <span className="text-sm sm:text-base text-zinc-300">
+              {skill.name}
+            </span>
           </div>
         ))}
       </div>
@@ -95,14 +114,22 @@ const WorkPage: React.FC = () => {
                   <div className="absolute -inset-2 rounded-full bg-white/20 blur-md" />
                   <div className="absolute -inset-3 rounded-full bg-white/10 blur-lg" />
                 </div>
-                <p className="text-base sm:text-lg text-stone-400" style={{textShadow:'0px 2px 2px black'}}>SKILLS</p>
+                <p
+                  className="text-base sm:text-lg text-stone-400"
+                  style={{ textShadow: "0px 2px 2px black" }}
+                >
+                  SKILLS
+                </p>
               </div>
               <div className="mb-6 sm:mb-8 ml-0 sm:ml-5">
-                <p className="text-lg sm:text-xl text-zinc-300 leading-relaxed" style={{textShadow:'0px 2px 2px black'}}>
+                <p
+                  className="text-lg sm:text-xl text-zinc-300 leading-relaxed"
+                  style={{ textShadow: "0px 2px 2px black" }}
+                >
                   Over the years, I have honed my skills in a wide range of
                   programming languages, developer tools, and modern
-                  technologies. Here&apos;s a glimpse of the technologies that power my
-                  journey.
+                  technologies. Here&apos;s a glimpse of the technologies that
+                  power my journey.
                 </p>
               </div>
 
@@ -130,7 +157,9 @@ const WorkPage: React.FC = () => {
               <div className="absolute -inset-2 rounded-full bg-white/20 blur-md" />
               <div className="absolute -inset-3 rounded-full bg-white/10 blur-lg" />
             </div>
-            <p className="text-base sm:text-lg text-stone-400">WHERE I HAVE WORKED</p>
+            <p className="text-base sm:text-lg text-stone-400">
+              WHERE I HAVE WORKED
+            </p>
           </div>
 
           {/* Timeline Container */}
@@ -144,8 +173,8 @@ const WorkPage: React.FC = () => {
               <ExperienceItem
                 logo="/Automation_edge_logo.png"
                 company="Automation Edge"
-                location="Pune, India"
-                role="Software Developer Intern"
+                location="Pune, Maharashtra"
+                role="Software Developer Intern (Frontend)"
                 date="Jan 2025 – Present"
                 extraInfo={["Active Contributor"]}
               />
@@ -155,25 +184,12 @@ const WorkPage: React.FC = () => {
                 logo="/Pi_reality_logo.png"
                 company="Pi Reality"
                 location="Bangalore, Remote"
-                role="Backend Developer Intern"
-                date="Nov 2024 – Dec 2024"
+                role="Software Developer Intern"
+                date="Nov 2024 – Jan 2025"
                 extraInfo={[
-                  "Enhanced the development and optimization of RESTful APIs using Node.js for a gaming application, ensuring efficient data handling and seamless user experience.",
-                  "Worked collaboratively with cross-functional teams to design and deliver scalable, maintainable code, integrating authentication, authorization, and caching strategies, resulting in improved system efficiency and performance.",
-                ]}
-              />
-
-              {/* Growhut */}
-              <ExperienceItem
-                logo="/Growhut_logo.png"
-                company="Growhut"
-                location="Gurgaon, Remote"
-                role="Frontend Developer Intern"
-                date="May 2023 – July 2023"
-                extraInfo={[
-                  "Contributed to the development of robust web applications leveraging React JS focusing on delivering seamless user interactions.",
-                  "Worked closely with backend and UI team to seamlessly integrate frontend features, resolved UI issues and engineered reusable, modular components ensuring a cohesive development process.",
-                  "Monitored and analyzed application performance using Google Lighthouse, boosting desktop scores from 42 to 74 and mobile scores from 35 to 50 through techniques like caching and image optimization.",
+                  "Developed and optimized RESTful APIs using Node.js and DynamoDB for a gaming application, ensuring seamless data handling and refined code structure.",
+                  "Led the end-to-end development of Crafty, a full-fledged web application for users to generate 3D models from images and text prompts.",
+                  "Integrated a 3D model viewer into the application, enabling immersive user experiences along with a payment gateway using Stripe ensuring secure transactions.",
                 ]}
               />
             </div>
