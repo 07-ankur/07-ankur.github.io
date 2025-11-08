@@ -21,15 +21,17 @@ import {
   SiSass,
   SiNextdotjs,
   SiMui,
+  SiBitbucket
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
+import { IconType } from "react-icons";
 import ExperienceItem from "./components/Work/ExperienceItem";
 
 interface SkillCategoryProps {
   title: string;
   skills: {
     name: string;
-    icon: React.ReactNode;
+    icon: IconType;
   }[];
 }
 
@@ -38,19 +40,22 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({ title, skills }) => {
     <div className="space-y-4">
       <h3 className="text-lg sm:text-xl font-light text-stone-300">{title}</h3>
       <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-        {skills.map((skill, index) => (
-          <div
-            key={index}
-            className="flex items-center gap-3 p-2 sm:p-3 rounded-lg bg-zinc-800/50 border border-zinc-700/50 hover:border-lime-400/50 transition-all group"
-          >
-            <div className="text-xl sm:text-2xl text-lime-400 group-hover:scale-110 transition-transform">
-              {skill.icon}
+        {skills.map((skill, index) => {
+          const IconComponent = skill.icon as React.ComponentType<any>;
+          return (
+            <div
+              key={index}
+              className="flex items-center gap-3 p-2 sm:p-3 rounded-lg bg-zinc-800/50 border border-zinc-700/50 hover:border-lime-400/50 transition-all group"
+            >
+              <div className="text-xl sm:text-2xl text-lime-400 group-hover:scale-110 transition-transform">
+                <IconComponent />
+              </div>
+              <span className="text-sm sm:text-base text-zinc-300">
+                {skill.name}
+              </span>
             </div>
-            <span className="text-sm sm:text-base text-zinc-300">
-              {skill.name}
-            </span>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
@@ -61,38 +66,39 @@ const WorkPage: React.FC = () => {
     {
       title: "Languages",
       skills: [
-        { name: "C/C++", icon: <SiCplusplus /> },
-        { name: "JavaScript", icon: <SiJavascript /> },
-        { name: "TypeScript", icon: <SiTypescript /> },
-        { name: "Python", icon: <SiPython /> },
+        { name: "C / C++", icon: SiCplusplus },
+        { name: "JavaScript", icon: SiJavascript },
+        { name: "TypeScript", icon: SiTypescript },
+        { name: "Python", icon: SiPython },
       ],
     },
     {
       title: "Developer Tools",
       skills: [
-        { name: "Git", icon: <SiGit /> },
-        { name: "GitHub", icon: <SiGithub /> },
-        { name: "VS Code", icon: <VscVscode /> },
-        { name: "Postman", icon: <SiPostman /> },
+        { name: "Git", icon: SiGit },
+        { name: "GitHub", icon: SiGithub },
+        { name: "VS Code", icon: VscVscode },
+        { name: "Postman", icon: SiPostman },
+        { name: "Bit Bucket", icon: SiBitbucket }
       ],
     },
     {
       title: "Technologies/Frameworks",
       skills: [
-        { name: "React", icon: <SiReact /> },
-        { name: "Node.js", icon: <SiNodedotjs /> },
-        { name: "Express", icon: <SiExpress /> },
-        { name: "MongoDB", icon: <SiMongodb /> },
-        { name: "Next.js", icon: <SiNextdotjs /> },
-        { name: "Firebase", icon: <SiFirebase /> },
-        { name: "Jest", icon: <SiJest /> },
-        { name: "MySQL", icon: <SiMysql /> },
-        { name: "PostgreSQL", icon: <SiPostgresql /> },
-        { name: "Prisma", icon: <SiPrisma /> },
-        { name: "Socket.io", icon: <SiSocketdotio /> },
-        { name: "Tailwind", icon: <SiTailwindcss /> },
-        { name: "Material UI", icon: <SiMui /> },
-        { name: "Sass", icon: <SiSass /> },
+        { name: "React", icon: SiReact },
+        { name: "Node.js", icon: SiNodedotjs },
+        { name: "Express", icon: SiExpress },
+        { name: "MongoDB", icon: SiMongodb },
+        { name: "Next.js", icon: SiNextdotjs },
+        { name: "Firebase", icon: SiFirebase },
+        { name: "Jest", icon: SiJest },
+        { name: "MySQL", icon: SiMysql },
+        { name: "PostgreSQL", icon: SiPostgresql },
+        { name: "Prisma", icon: SiPrisma },
+        { name: "Socket.io", icon: SiSocketdotio },
+        { name: "Tailwind", icon: SiTailwindcss },
+        { name: "Material UI", icon: SiMui },
+        { name: "Sass", icon: SiSass },
       ],
     },
   ];
@@ -169,14 +175,32 @@ const WorkPage: React.FC = () => {
 
             {/* Timeline Items */}
             <div className="space-y-12 sm:space-y-16">
-              {/* Automation Edge */}
+              {/* AutomationEdge */}
               <ExperienceItem
                 logo="/Automation_edge_logo.png"
-                company="Automation Edge"
+                company="AutomationEdge"
                 location="Pune, Maharashtra"
-                role="Software Developer Intern (Frontend)"
-                date="Jan 2025 – Present"
-                extraInfo={["Active Contributor"]}
+                role="Software Development Engineer"
+                date="Jul 2025 – Present"
+                extraInfo={[
+                  "Played a key role in architecting and developing CareFlo, a multi-tenant, multi-module platform for home care agencies with robust role-based access control and AI-driven process automation, enhancing operational efficiency.",
+                  "Refactored the Nx monorepo architecture by migrating to a single-layout system for multiple apps, removing an entire dependency layer from the Nx graph, and significantly improving maintainability and build performance.",
+                  "Designed and implemented a JSON-based customizable UI support to streamline multi-tenant UI configurations, reducing development effort and increasing scalability.",
+                  "Led development efforts for critical modules including Referral Summary and EVV (Electronic Visit Verification), and managed the complete suite of System Admin applications with native user authentication and role management."
+                ]}
+              />
+
+              <ExperienceItem
+                logo="/Automation_edge_logo.png"
+                company="AutomationEdge"
+                location="Pune, Maharashtra"
+                role="Software Developer Intern"
+                date="Jan 2025 – Jun 2025"
+                extraInfo={[
+                  "Developed an interactive UI for referral summarization with features like drag-n-drop and section-wise insights.",
+                  "Independently delivered the frontend for an automated email responder chatbot alongside CRUD implementation for Accounts and Transactions.",
+                  "Resolved critical issues in AI Studio by addressing JIRA tickets, enhancing code reusability and overall user experience.",
+                ]}
               />
 
               {/* Pi Reality */}

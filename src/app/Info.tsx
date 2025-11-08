@@ -18,6 +18,8 @@ const EducationItem: React.FC<EducationProps> = ({
   date,
   extraInfo,
 }) => {
+  const ActivityIcon = LuActivity as React.ComponentType<any>;
+
   return (
     <div className="relative lg:grid lg:grid-cols-[100px_1fr] gap-6">
       {/* Timeline Node - Only visible on large screens */}
@@ -51,7 +53,7 @@ const EducationItem: React.FC<EducationProps> = ({
             {extraInfo.map((item, index) => (
               <div key={index} className="flex items-start gap-3 mb-2">
                 <div className="w-5 sm:w-6 h-5 sm:h-6 flex items-center justify-center flex-shrink-0">
-                  <LuActivity className="w-4 sm:w-5 h-4 sm:h-5 text-lime-500" />
+                  <ActivityIcon className="w-4 sm:w-5 h-4 sm:h-5 text-lime-500" />
                 </div>
                 <span className="flex-1">{item}</span>
               </div>

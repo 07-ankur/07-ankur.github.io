@@ -101,6 +101,14 @@ const Terminal = () => {
   const [hoveredIcon, setHoveredIcon] = useState<number | null>(null);
   const [messageIndex, setMessageIndex] = useState(0);
   
+  // Properly type the icons
+  const ImageIcon = IoImageOutline as React.ComponentType<any>;
+  const CloseIcon = VscChromeClose as React.ComponentType<any>;
+  const AddIcon = VscAdd as React.ComponentType<any>;
+  const ChevronIcon = VscChevronDown as React.ComponentType<any>;
+  const MinimizeIcon = VscChromeMinimize as React.ComponentType<any>;
+  const MaximizeIcon = VscChromeMaximize as React.ComponentType<any>;
+  
   const messages = [
     "I'm sorry, I can't do that",
     "Did you seriously expect this button to do something",
@@ -131,25 +139,25 @@ const Terminal = () => {
               </div>
             </div>
             <div className="flex items-center gap-2 bg-zinc-700 p-2 border-white rounded-lg">
-              <IoImageOutline className="text-gray-400" />
+              <ImageIcon className="text-gray-400" />
               <span className="text-gray-300 text-sm">Featured Projects</span>
               <div
                 className="cursor-pointer relative hidden md:block"
                 onMouseEnter={() => handleIconHover(5)}
                 onMouseLeave={() => setHoveredIcon(null)}
               >
-                <VscChromeClose className="text-gray-400" />
+                <CloseIcon className="text-gray-400" />
                 <Tooltip show={hoveredIcon === 5}>{messages[messageIndex]}</Tooltip>
               </div>
             </div>
-            <div className="flex items-center gap-1 hidden md:flex">
+            <div className="items-center gap-1 hidden md:flex">
               <div
                 className="relative"
                 onMouseEnter={() => handleIconHover(3)}
                 onMouseLeave={() => setHoveredIcon(null)}
               >
                 <div className="hover:bg-zinc-600 p-1 cursor-pointer rounded-md">
-                  <VscAdd className="text-gray-400" />
+                  <AddIcon className="text-gray-400" />
                 </div>
                 <Tooltip show={hoveredIcon === 3}>{messages[messageIndex]}</Tooltip>
               </div>
@@ -159,19 +167,19 @@ const Terminal = () => {
                 onMouseLeave={() => setHoveredIcon(null)}
               >
                 <div className="hover:bg-zinc-600 p-1 cursor-pointer rounded-md">
-                  <VscChevronDown className="text-gray-400" />
+                  <ChevronIcon className="text-gray-400" />
                 </div>
                 <Tooltip show={hoveredIcon === 4}>{messages[messageIndex]}</Tooltip>
               </div>
             </div>
           </div>
-          <div className="flex items-center gap-8 ml-2 hidden md:flex">
+          <div className="items-center gap-8 ml-2 hidden md:flex">
             <div
               className="cursor-pointer relative"
               onMouseEnter={() => handleIconHover(0)}
               onMouseLeave={() => setHoveredIcon(null)}
             >
-              <VscChromeMinimize className="text-gray-400 hover:text-white" />
+              <MinimizeIcon className="text-gray-400 hover:text-white" />
               <Tooltip show={hoveredIcon === 0} position="right">{messages[messageIndex]}</Tooltip>
             </div>
             <div
@@ -179,7 +187,7 @@ const Terminal = () => {
               onMouseEnter={() => handleIconHover(1)}
               onMouseLeave={() => setHoveredIcon(null)}
             >
-              <VscChromeMaximize className="text-gray-400 hover:text-white" />
+              <MaximizeIcon className="text-gray-400 hover:text-white" />
               <Tooltip show={hoveredIcon === 1} position="right">{messages[messageIndex]}</Tooltip>
             </div>
             <div
@@ -187,7 +195,7 @@ const Terminal = () => {
               onMouseEnter={() => handleIconHover(2)}
               onMouseLeave={() => setHoveredIcon(null)}
             >
-              <VscChromeClose className="text-gray-400 hover:text-red-600" />
+              <CloseIcon className="text-gray-400 hover:text-red-600" />
               <Tooltip show={hoveredIcon === 2} position="right">{messages[messageIndex]}</Tooltip>
             </div>
           </div>

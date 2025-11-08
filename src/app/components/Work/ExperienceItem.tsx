@@ -52,14 +52,17 @@ const ExperienceItem: React.FC<ExperienceProps> = ({
           <h4 className="text-xl sm:text-2xl mb-1 text-zinc-300 text-center sm:text-left">{role}</h4>
           <p className="text-zinc-400 mb-3 text-center sm:text-left">{date}</p>
           <div className="text-zinc-300 text-base sm:text-lg">
-            {extraInfo.map((item, index) => (
-              <div key={index} className="flex items-start gap-3 mb-2">
-                <div className="w-5 sm:w-6 h-5 sm:h-6 flex items-center justify-center flex-shrink-0">
-                  <LuActivity className="w-4 sm:w-5 h-4 sm:h-5 text-lime-500" />
+            {extraInfo.map((item, index) => {
+              const IconComponent = LuActivity as React.ComponentType<any>;
+              return (
+                <div key={index} className="flex items-start gap-3 mb-2">
+                  <div className="w-5 sm:w-6 h-5 sm:h-6 flex items-center justify-center flex-shrink-0">
+                    <IconComponent className="w-4 sm:w-5 h-4 sm:h-5 text-lime-500" />
+                  </div>
+                  <span className="flex-1">{item}</span>
                 </div>
-                <span className="flex-1">{item}</span>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
