@@ -41,7 +41,7 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({ title, skills }) => {
       <h3 className="text-lg sm:text-xl font-light text-stone-300">{title}</h3>
       <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
         {skills.map((skill, index) => {
-          const IconComponent = skill.icon as React.ComponentType<any>;
+          const IconComponent = skill.icon as React.ComponentType<React.SVGProps<SVGSVGElement>>;
           return (
             <div
               key={index}

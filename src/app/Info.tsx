@@ -18,7 +18,7 @@ const EducationItem: React.FC<EducationProps> = ({
   date,
   extraInfo,
 }) => {
-  const ActivityIcon = LuActivity as React.ComponentType<any>;
+  const ActivityIcon = LuActivity as React.ComponentType<React.SVGProps<SVGSVGElement>>;
 
   return (
     <div className="relative lg:grid lg:grid-cols-[100px_1fr] gap-6">

@@ -22,10 +22,10 @@
     color,
     techstack,
   }) => {
-    const ActivityIcon = LuActivity as React.ComponentType<any>;
-    const CodeIcon = IoCodeSlash as React.ComponentType<any>;
-    const GitIcon = IoGitBranch as React.ComponentType<any>;
-    const LinkIcon = IoLinkOutline as React.ComponentType<any>;
+    const ActivityIcon = LuActivity as React.ComponentType<React.SVGProps<SVGSVGElement>>;
+    const CodeIcon = IoCodeSlash as React.ComponentType<React.SVGProps<SVGSVGElement>>;
+    const GitIcon = IoGitBranch as React.ComponentType<React.SVGProps<SVGSVGElement>>;
+    const LinkIcon = IoLinkOutline as React.ComponentType<React.SVGProps<SVGSVGElement>>;
 
     return (
       <div className="my-8 md:my-20 rounded-xl overflow-hidden">

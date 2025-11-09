@@ -102,12 +102,12 @@ const Terminal = () => {
   const [messageIndex, setMessageIndex] = useState(0);
   
   // Properly type the icons
-  const ImageIcon = IoImageOutline as React.ComponentType<any>;
-  const CloseIcon = VscChromeClose as React.ComponentType<any>;
-  const AddIcon = VscAdd as React.ComponentType<any>;
-  const ChevronIcon = VscChevronDown as React.ComponentType<any>;
-  const MinimizeIcon = VscChromeMinimize as React.ComponentType<any>;
-  const MaximizeIcon = VscChromeMaximize as React.ComponentType<any>;
+  const ImageIcon = IoImageOutline as React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  const CloseIcon = VscChromeClose as React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  const AddIcon = VscAdd as React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  const ChevronIcon = VscChevronDown as React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  const MinimizeIcon = VscChromeMinimize as React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  const MaximizeIcon = VscChromeMaximize as React.ComponentType<React.SVGProps<SVGSVGElement>>;
   
   const messages = [
     "I'm sorry, I can't do that",

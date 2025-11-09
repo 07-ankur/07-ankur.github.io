@@ -21,8 +21,8 @@ const AdditionalProjectCard: React.FC<AdditionalProjectProps> = ({
     codeUrl,
     bgColor = "bg-zinc-900",
   }) => {
-    const CodeIcon = VscCode as React.ComponentType<any>;
-    const LinkIcon = IoLinkOutline as React.ComponentType<any>;
+    const CodeIcon = VscCode as React.ComponentType<React.SVGProps<SVGSVGElement>>;
+    const LinkIcon = IoLinkOutline as React.ComponentType<React.SVGProps<SVGSVGElement>>;
 
     return (
       <div

@@ -53,7 +53,7 @@ const ExperienceItem: React.FC<ExperienceProps> = ({
           <p className="text-zinc-400 mb-3 text-center sm:text-left">{date}</p>
           <div className="text-zinc-300 text-base sm:text-lg">
             {extraInfo.map((item, index) => {
-              const IconComponent = LuActivity as React.ComponentType<any>;
+              const IconComponent = LuActivity as React.ComponentType<React.SVGProps<SVGSVGElement>>;
               return (
                 <div key={index} className="flex items-start gap-3 mb-2">
                   <div className="w-5 sm:w-6 h-5 sm:h-6 flex items-center justify-center flex-shrink-0">
