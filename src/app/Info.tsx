@@ -133,9 +133,7 @@ export default function InfoPage() {
               <div className="grid gap-8 sm:gap-16 mt-16 sm:mt-32">
                 <div className="space-y-8 sm:space-y-12 text-lg sm:text-2xl text-zinc-400 leading-relaxed">
                   <p className="max-w-4xl">
-                    Hi there! 👋 I&apos;m a passionate Software Developer and a
-                    final-year B.Tech student at the Indian Institute of
-                    Information Technology (IIIT) Ranchi🎓.
+                    Hi there! 👋 I&apos;m a passionate Software Developer currently working at Automation Edge Technologies primarily focused on building scalable web applications.
                   </p>
 
                   <p className="max-w-4xl">
@@ -143,7 +141,7 @@ export default function InfoPage() {
                     applications, and exploring innovative solutions. Beyond the
                     keyboard, you&apos;ll often find me lost in thought,
                     strategizing over a chessboard♟️, binge-watching cinema🍿,
-                    solving challenging sudokus, or playing mobile games🎮.
+                    solving challenging sudokus, or playing online games🎮.
                   </p>
 
                   <p className="max-w-4xl">
@@ -188,7 +186,7 @@ export default function InfoPage() {
                 institution="Indian Institute of Information Technology (IIIT), Ranchi"
                 degree="Bachelor of Technology in Electronics and Communication Engineering (ES & IOT)"
                 date="Dec 2021 – Present"
-                extraInfo={["CGPA - 8.79"]}
+                extraInfo={["CGPA - 8.93"]}
               />
 
               {/* DPS Ranchi */}
