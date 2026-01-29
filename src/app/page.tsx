@@ -8,7 +8,9 @@ import { useEffect } from "react";
 export default function Home() {
   const { activeTab } = useNavigation();
 
-  useEffect(() => {}, [activeTab]);
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [activeTab]);
 
   const renderContent = () => {
     switch (activeTab) {

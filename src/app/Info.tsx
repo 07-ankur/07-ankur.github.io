@@ -185,7 +185,7 @@ export default function InfoPage() {
                 logo="/IIITRanchi_logo.webp"
                 institution="Indian Institute of Information Technology (IIIT), Ranchi"
                 degree="Bachelor of Technology in Electronics and Communication Engineering (ES & IOT)"
-                date="Dec 2021 – Present"
+                date="Dec 2021 – May 2025"
                 extraInfo={["CGPA - 8.93"]}
               />
 
