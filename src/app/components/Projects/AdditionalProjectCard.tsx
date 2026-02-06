@@ -1,6 +1,8 @@
 import React from "react";
 import { IoLinkOutline } from "react-icons/io5";
 import { VscCode } from "react-icons/vsc";
+import { motion } from "framer-motion";
+import { projectVariants } from "../../animations";
 
 interface AdditionalProjectProps {
   title: string;
@@ -25,8 +27,12 @@ const AdditionalProjectCard: React.FC<AdditionalProjectProps> = ({
     const LinkIcon = IoLinkOutline as React.ComponentType<React.SVGProps<SVGSVGElement>>;
 
     return (
-      <div
+      <motion.div
         className={`p-3 md:p-6 rounded-xl ${bgColor} border border-zinc-400 hover:border-lime-400 transition-colors duration-200 my-4`}
+        variants={projectVariants}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true }}
       >
         <div className="flex flex-col md:flex-row items-start gap-4">
           <div className="p-2 md:p-3 rounded-lg bg-zinc-800">
@@ -71,7 +77,7 @@ const AdditionalProjectCard: React.FC<AdditionalProjectProps> = ({
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     );
   };
 

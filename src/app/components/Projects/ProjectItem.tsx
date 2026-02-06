@@ -2,6 +2,8 @@
   import Image from "next/image";
   import { LuActivity } from "react-icons/lu";
   import { IoCodeSlash, IoGitBranch, IoLinkOutline } from "react-icons/io5";
+  import { motion } from "framer-motion";
+  import { projectVariants } from "../../animations";
 
   interface ProjectProps {
     title: string;
@@ -28,7 +30,13 @@
     const LinkIcon = IoLinkOutline as React.ComponentType<React.SVGProps<SVGSVGElement>>;
 
     return (
-      <div className="my-8 md:my-20 rounded-xl overflow-hidden">
+      <motion.div
+        className="my-8 md:my-20 rounded-xl overflow-hidden"
+        variants={projectVariants}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true }}
+      >
         <div className="bg-zinc-900/90 border border-zinc-700 rounded-xl">
           {/* Header Bar */}
           <div className="px-2 md:px-4 py-2 md:py-3 bg-zinc-800/50 border-b border-zinc-700 flex items-center justify-between">
@@ -146,7 +154,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     );
   };
 

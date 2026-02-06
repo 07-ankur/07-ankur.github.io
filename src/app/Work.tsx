@@ -26,6 +26,8 @@ import {
 import { VscVscode } from "react-icons/vsc";
 import { IconType } from "react-icons";
 import ExperienceItem from "./components/Work/ExperienceItem";
+import { motion } from "framer-motion";
+import { headerVariants, containerVariants, skillCardVariants, itemVariants } from "./animations";
 
 interface SkillCategoryProps {
   title: string;
@@ -37,15 +39,29 @@ interface SkillCategoryProps {
 
 const SkillCategory: React.FC<SkillCategoryProps> = ({ title, skills }) => {
   return (
-    <div className="space-y-4">
+    <motion.div
+      className="space-y-4"
+      variants={itemVariants}
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: true }}
+    >
       <h3 className="text-lg sm:text-xl font-light text-stone-300">{title}</h3>
-      <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+      <motion.div
+        className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4"
+        variants={containerVariants}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true }}
+      >
         {skills.map((skill, index) => {
           const IconComponent = skill.icon as React.ComponentType<React.SVGProps<SVGSVGElement>>;
           return (
-            <div
+            <motion.div
               key={index}
               className="flex items-center gap-3 p-2 sm:p-3 rounded-lg bg-zinc-800/50 border border-zinc-700/50 hover:border-lime-400/50 transition-all group"
+              variants={skillCardVariants}
+              whileHover="hover"
             >
               <div className="text-xl sm:text-2xl text-lime-400 group-hover:scale-110 transition-transform">
                 <IconComponent />
@@ -53,11 +69,11 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({ title, skills }) => {
               <span className="text-sm sm:text-base text-zinc-300">
                 {skill.name}
               </span>
-            </div>
-          );
+            </motion.div>
+            );
         })}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
@@ -112,8 +128,14 @@ const WorkPage: React.FC = () => {
             <div className="absolute -inset-6 bg-gradient-to-r from-zinc-900 via-zinc-800 to-zinc-900 blur-xl opacity-70" />
             <div className="absolute -inset-12 bg-gradient-to-r from-zinc-900 via-zinc-800 to-zinc-900 blur-2xl opacity-50" />
 
-            <div className="relative z-10">
-              <div className="flex items-center gap-3 mb-4 sm:mb-6">
+            <motion.div
+              className="relative z-10"
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              variants={containerVariants}
+            >
+              <motion.div className="flex items-center gap-3 mb-4 sm:mb-6" variants={headerVariants}>
                 <div className="relative w-2 h-2">
                   <div className="absolute inset-0 rounded-full bg-white" />
                   <div className="absolute inset-0 rounded-full bg-white blur-sm" />
@@ -126,8 +148,8 @@ const WorkPage: React.FC = () => {
                 >
                   SKILLS
                 </p>
-              </div>
-              <div className="mb-6 sm:mb-8 ml-0 sm:ml-5">
+              </motion.div>
+              <motion.div className="mb-6 sm:mb-8 ml-0 sm:ml-5" variants={itemVariants}>
                 <p
                   className="text-lg sm:text-xl text-zinc-300 leading-relaxed"
                   style={{ textShadow: "0px 2px 2px black" }}
@@ -137,10 +159,16 @@ const WorkPage: React.FC = () => {
                   technologies. Here&apos;s a glimpse of the technologies that
                   power my journey.
                 </p>
-              </div>
+              </motion.div>
 
               {/* Skills Categories */}
-              <div className="space-y-6 sm:space-y-8 ml-0 sm:ml-5">
+              <motion.div
+                className="space-y-6 sm:space-y-8 ml-0 sm:ml-5"
+                variants={containerVariants}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true }}
+              >
                 {skillCategories.map((category, index) => (
                   <SkillCategory
                     key={index}
@@ -148,15 +176,21 @@ const WorkPage: React.FC = () => {
                     skills={category.skills}
                   />
                 ))}
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </section>
 
         {/* Experience Section */}
         <section className="space-y-8 sm:space-y-10">
           {/* Experience Header */}
-          <div className="flex items-center gap-3">
+          <motion.div
+            className="flex items-center gap-3"
+            variants={headerVariants}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+          >
             <div className="relative w-2 h-2">
               <div className="absolute inset-0 rounded-full bg-white" />
               <div className="absolute inset-0 rounded-full bg-white blur-sm" />
@@ -166,10 +200,16 @@ const WorkPage: React.FC = () => {
             <p className="text-base sm:text-lg text-stone-400">
               WHERE I HAVE WORKED
             </p>
-          </div>
+          </motion.div>
 
           {/* Timeline Container */}
-          <div className="relative">
+          <motion.div
+            className="relative"
+            variants={containerVariants}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+          >
             {/* Timeline Line - Only visible on large screens */}
             <div className="absolute left-[49px] top-0 bottom-0 w-px bg-gradient-to-b from-zinc-500 to-transparent hidden lg:block" />
 
@@ -217,7 +257,7 @@ const WorkPage: React.FC = () => {
                 ]}
               />
             </div>
-          </div>
+          </motion.div>
         </section>
       </main>
     </div>

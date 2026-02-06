@@ -49,7 +49,7 @@ const Footer = () => {
                 </span>
               </a>
               <a
-                href="https://bit.ly/Ankur_resume"
+                href="https://drive.google.com/file/d/1EaMfLD5CsxxFxaw6RoNIiU9fgRjFMI4I/view"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group block text-white text-lg hover:text-zinc-300 transition-all duration-200"

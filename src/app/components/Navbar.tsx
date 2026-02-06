@@ -221,7 +221,7 @@ const Navbar = () => {
             </svg>
           </a>
           <a
-            href="https://bit.ly/Ankur_resume"
+            href="https://drive.google.com/file/d/1EaMfLD5CsxxFxaw6RoNIiU9fgRjFMI4I/view"
             target="_blank"
             className="text-white hover:text-white flex items-center gap-1 px-4 py-3 rounded-lg hover:bg-zinc-700"
           >
@@ -259,7 +259,7 @@ const Navbar = () => {
         </button>
         <button className="px-4 py-3 rounded-full transition-all text-white hover:bg-zinc-800">
           <a
-            href="https://bit.ly/Ankur_resume"
+            href="https://drive.google.com/file/d/1EaMfLD5CsxxFxaw6RoNIiU9fgRjFMI4I/view"
             target="_blank"
             className="text-white hover:text-white flex items-center gap-1"
           >

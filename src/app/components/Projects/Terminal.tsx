@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { IoImageOutline } from "react-icons/io5";
 import { VscChromeClose, VscAdd, VscChevronDown, VscChromeMinimize, VscChromeMaximize } from "react-icons/vsc";
+import { motion } from "framer-motion";
+import { fadeInFromBottomVariants } from "../../animations";
 
 interface TypewriterProps {
   text: string;
@@ -75,8 +77,10 @@ const TerminalContent = () => {
     }
   };
 
+  const isComplete = currentLine === lines.length - 1;
+
   return (
-    <div className="p-4 font-mono text-md">
+    <div className={`p-4 font-mono text-md ${isComplete ? 'h-auto' : 'h-80 md:h-80'}`}>
       {lines.map((line, index) => (
         <p key={index} className={`${index === 3 ? 'mb-10' : index === 8 ? 'my-10' : 'mb-1'}`}>
           {line.prefix && (
@@ -127,8 +131,14 @@ const Terminal = () => {
   };
 
   return (
-    <div className="p-1 mb-6 md:mb-8 rounded-md bg-zinc-600">
-      <div className="bg-[#1e1e1e] rounded-lg overflow-hidden border-2 border-stone-500">
+    <motion.div
+      className="p-1 mb-6 md:mb-8 rounded-md bg-zinc-600"
+      variants={fadeInFromBottomVariants}
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: true }}
+    >
+      <div className="bg-[#1e1e1e] rounded-lg overflow-hidden border-2 border-stone-500 max-h-[500px] md:max-h-[600px]">
         <div className="bg-[#2d2d2d] px-3 py-2 flex items-center justify-between">
           <div className="flex gap-5">
             <div className="p-2 flex items-center">
@@ -203,7 +213,7 @@ const Terminal = () => {
 
         <TerminalContent />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

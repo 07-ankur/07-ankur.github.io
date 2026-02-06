@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import { LuActivity } from "react-icons/lu";
+import { motion } from "framer-motion";
+import { experienceVariants } from "../../animations";
 
 interface ExperienceProps {
   logo: string;
@@ -20,7 +22,13 @@ const ExperienceItem: React.FC<ExperienceProps> = ({
   extraInfo,
 }) => {
   return (
-    <div className="relative lg:grid lg:grid-cols-[100px_1fr] gap-6">
+    <motion.div
+      className="relative lg:grid lg:grid-cols-[100px_1fr] gap-6"
+      variants={experienceVariants}
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: true, amount: 0.3 }}
+    >
       {/* Timeline Node - Only visible on large screens */}
       <div className="relative hidden lg:flex justify-center">
         <div className="relative w-3 h-3 mt-6">
@@ -66,7 +74,7 @@ const ExperienceItem: React.FC<ExperienceProps> = ({
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

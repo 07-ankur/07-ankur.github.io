@@ -4,6 +4,8 @@ import InfoPage from "./Info";
 import WorkPage from "./Work";
 import ProjectsPage from "./Projects";
 import { useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { pageVariants } from "./animations";
 
 export default function Home() {
   const { activeTab } = useNavigation();
@@ -27,9 +29,17 @@ export default function Home() {
 
   return (
     <main className="container mx-auto px-4">
-      <div className="transition-opacity duration-300 ease-in-out">
-        {renderContent()}
-      </div>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeTab}
+          variants={pageVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+        >
+          {renderContent()}
+        </motion.div>
+      </AnimatePresence>
     </main>
   );
 }
