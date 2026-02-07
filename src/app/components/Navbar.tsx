@@ -9,6 +9,7 @@ const Navbar = () => {
   const [isExpanded, setIsExpanded] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     // Handle scroll progress
@@ -18,6 +19,7 @@ const Navbar = () => {
       const progress = (currentProgress / scrollHeight) * 100 || 0;
       setScrollProgress(Math.min(progress, 100));
       setIsExpanded(progress < 2);
+      setIsScrolled(currentProgress > 20);
     };
 
     // Handle responsive layout
@@ -30,10 +32,11 @@ const Navbar = () => {
 
     // Initial check
     handleResize();
+    handleScroll();
 
-    // Add event listeners
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", handleResize);
+    // Add event listeners with passive for better performance
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleResize, { passive: true });
 
     // Cleanup
     return () => {
@@ -83,6 +86,7 @@ const Navbar = () => {
 
   return (
     <nav className="sticky top-0 bg-zinc-900 z-50 flex flex-col md:flex-row justify-between items-center mb-24 p-4 gap-4">
+
       <div className="flex justify-between items-center w-full md:w-auto">
         <div className="text-center md:text-left">
           <h1 className="text-2xl md:text-3xl font-semibold">Ankur Kumar</h1>
@@ -103,7 +107,7 @@ const Navbar = () => {
               isExpanded || isMobile
                 ? "grid-cols-[50px_minmax(200px,300px)_50px]"
                 : "grid-cols-[50px_0px_50px] group-hover:grid-cols-[50px_300px_50px]"
-            } items-center transition-all duration-300`}
+            } items-center transition-all duration-300 ease-in-out`}
           >
             <div className="hidden md:flex items-center justify-center w-[50px]">
               <Image
@@ -155,8 +159,15 @@ const Navbar = () => {
 
             <div className="hidden md:flex items-center justify-center w-[50px]">
               <svg height={radius * 2} width={radius * 2} className="rotate-[-90deg]">
+                <defs>
+                  <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#84cc16" />
+                    <stop offset="50%" stopColor="#a3e635" />
+                    <stop offset="100%" stopColor="#65a30d" />
+                  </linearGradient>
+                </defs>
                 <circle
-                  stroke="#A3A3A6"
+                  stroke="#71717a"
                   fill="transparent"
                   strokeWidth={strokeWidth}
                   r={normalizedRadius}
@@ -164,7 +175,7 @@ const Navbar = () => {
                   cy={radius}
                 />
                 <circle
-                  stroke="#a3e635"
+                  stroke="url(#progressGradient)"
                   fill="transparent"
                   strokeWidth={strokeWidth}
                   strokeDasharray={circumference + " " + circumference}
@@ -173,6 +184,8 @@ const Navbar = () => {
                   cx={radius}
                   cy={radius}
                   className="transition-all duration-300"
+                  strokeLinecap="round"
+                  filter="drop-shadow(0 0 4px rgba(163, 230, 53, 0.6))"
                 />
               </svg>
             </div>
@@ -208,10 +221,15 @@ const Navbar = () => {
           <a
             href="https://www.linkedin.com/in/07-ankur-kumar/"
             target="_blank"
-            className="text-white hover:text-white flex items-center gap-1 px-4 py-3 rounded-lg hover:bg-zinc-700"
+            className="text-white hover:text-white flex items-center justify-between px-4 py-3 rounded-lg hover:bg-zinc-700 transition-all duration-300 group active:scale-95"
           >
-            LinkedIn
-            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <span className="flex items-center gap-2">
+              <svg className="w-5 h-5 transition-transform duration-300 group-hover:rotate-12" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+              LinkedIn
+            </span>
+            <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path
                 d="M7 17L17 7M17 7H7M17 7V17"
                 strokeWidth="2"
@@ -223,10 +241,15 @@ const Navbar = () => {
           <a
             href="https://drive.google.com/file/d/1EaMfLD5CsxxFxaw6RoNIiU9fgRjFMI4I/view"
             target="_blank"
-            className="text-white hover:text-white flex items-center gap-1 px-4 py-3 rounded-lg hover:bg-zinc-700"
+            className="text-white hover:text-white flex items-center justify-between px-4 py-3 rounded-lg hover:bg-zinc-700 transition-all duration-300 group active:scale-95"
           >
-            Resume
-            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <span className="flex items-center gap-2">
+              <svg className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Resume
+            </span>
+            <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path
                 d="M7 17L17 7M17 7H7M17 7V17"
                 strokeWidth="2"
@@ -240,40 +263,44 @@ const Navbar = () => {
 
       {/* Desktop Social Links */}
       <div className="hidden md:flex gap-4">
-        <button className="px-4 py-3 rounded-full transition-all text-white hover:bg-zinc-800">
-          <a
-            href="https://www.linkedin.com/in/07-ankur-kumar/"
-            target="_blank"
-            className="text-white hover:text-white flex items-center gap-1"
-          >
-            LinkedIn
-            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path
-                d="M7 17L17 7M17 7H7M17 7V17"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </a>
-        </button>
-        <button className="px-4 py-3 rounded-full transition-all text-white hover:bg-zinc-800">
-          <a
-            href="https://drive.google.com/file/d/1EaMfLD5CsxxFxaw6RoNIiU9fgRjFMI4I/view"
-            target="_blank"
-            className="text-white hover:text-white flex items-center gap-1"
-          >
-            Resume
-            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path
-                d="M7 17L17 7M17 7H7M17 7V17"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </a>
-        </button>
+        <a
+          href="https://www.linkedin.com/in/07-ankur-kumar/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-4 py-3 rounded-full transition-all duration-300 text-white hover:bg-zinc-800 flex items-center gap-2 group hover:scale-105 active:scale-95"
+        >
+          <svg className="w-5 h-5 transition-transform duration-300 group-hover:rotate-12" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+          </svg>
+          LinkedIn
+          <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path
+              d="M7 17L17 7M17 7H7M17 7V17"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </a>
+        <a
+          href="https://drive.google.com/file/d/1EaMfLD5CsxxFxaw6RoNIiU9fgRjFMI4I/view"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-4 py-3 rounded-full transition-all duration-300 text-white hover:bg-zinc-800 flex items-center gap-2 group hover:scale-105 active:scale-95"
+        >
+          <svg className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          Resume
+          <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path
+              d="M7 17L17 7M17 7H7M17 7V17"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </a>
       </div>
     </nav>
   );
