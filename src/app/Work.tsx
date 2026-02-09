@@ -59,14 +59,29 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({ title, skills }) => {
           return (
             <motion.div
               key={index}
-              className="flex items-center gap-3 p-2 sm:p-3 rounded-lg bg-zinc-800/50 border border-zinc-700/50 hover:border-lime-400/50 transition-all group"
+              className="relative flex items-center gap-3 p-2 sm:p-3 rounded-lg bg-zinc-800/50 border border-zinc-700/50 hover:border-lime-400/50 hover:bg-gradient-to-br hover:from-zinc-800/80 hover:to-lime-950/30 transition-all group overflow-hidden cursor-pointer"
               variants={skillCardVariants}
               whileHover="hover"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
             >
-              <div className="text-xl sm:text-2xl text-lime-400 group-hover:scale-110 transition-transform">
-                <IconComponent />
+              {/* Glow effect on hover */}
+              <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-lime-400/0 via-lime-400/0 to-lime-400/0 group-hover:from-lime-400/20 group-hover:via-lime-400/10 group-hover:to-lime-400/0 transition-all duration-300 pointer-events-none" />
+              
+              <div className="text-xl sm:text-2xl text-lime-400 group-hover:text-lime-300 transition-all duration-300 flex-shrink-0 relative z-10 group-hover:scale-125 group-hover:rotate-12">
+                <motion.div
+                  whileHover={{ 
+                    rotate: [0, -10, 10, -5, 5, 0],
+                    y: [0, -5, 0]
+                  }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <IconComponent />
+                </motion.div>
               </div>
-              <span className="text-sm sm:text-base text-zinc-300">
+              <span className="text-sm sm:text-base text-zinc-300 group-hover:text-white transition-colors duration-300 font-medium relative z-10">
                 {skill.name}
               </span>
             </motion.div>
