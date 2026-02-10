@@ -74,13 +74,19 @@
                   <h3 className="text-xl md:text-2xl font-semibold text-white mb-2">
                     {title}
                   </h3>
-                  {description.map((des) => (
-                    <div key={des} className="flex items-start gap-2 mb-2">
+                  {description.map((des, idx) => (
+                    <motion.div 
+                      key={des} 
+                      className="flex items-start gap-2 mb-2"
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: idx * 0.1 }}
+                    >
                       <div className="flex-shrink-0 mt-1">
                         <ActivityIcon className="w-2.5 md:w-3 h-2.5 md:h-3 text-lime-500" />
                       </div>
                       <p className="text-zinc-400 text-xs md:text-sm">{des}</p>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
 
@@ -107,7 +113,11 @@
               </div>
 
               {/* Project Preview */}
-              <div className="relative group">
+              <motion.div 
+                className="relative group"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+              >
                 <div className="relative rounded-lg overflow-hidden border border-zinc-700">
                   <div className="h-6 md:h-8 bg-zinc-800 flex items-center px-2 md:px-3 gap-1 md:gap-2">
                     <div className="flex gap-1.5">
@@ -130,16 +140,19 @@
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-1.5 md:gap-2 mt-3 md:mt-5">
-                  {techstack.map((tech) => (
-                    <span
+                  {techstack.map((tech, idx) => (
+                    <motion.span
                       key={tech}
                       className="px-2 md:px-3 py-0.5 md:py-1 text-[10px] md:text-xs bg-zinc-800 text-zinc-300 rounded-full border border-zinc-700"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: idx * 0.05 }}
                     >
                       {tech}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
 
