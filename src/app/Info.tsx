@@ -93,7 +93,7 @@ export default function InfoPage() {
     <div className="min-h-screen bg-zinc-900 text-white p-2">
       <main className="max-w-4xl mx-auto relative px-4 sm:px-6 lg:px-8">
         {/* About Me Section */}
-        <div className="mb-16 sm:mb-24">
+        <div className="mb-16 sm:mb-24 pt-0">
           <div className="relative">
             <div className="absolute -inset-10 bg-gradient-to-r from-zinc-900 via-zinc-800 to-zinc-900 blur-2xl opacity-70" />
             <div className="absolute -inset-20 bg-gradient-to-r from-zinc-900 via-zinc-800 to-zinc-900 blur-3xl opacity-50" />
@@ -117,7 +117,7 @@ export default function InfoPage() {
                 </p>
               </motion.div>
               <motion.h2
-                className="text-2xl sm:text-4xl font-light leading-tight tracking-tight mb-4"
+                className="text-2xl sm:text-3xl lg:text-5xl font-light leading-tight tracking-tight mb-4"
                 variants={itemVariants}
                 style={{ textShadow: "0px 2px 2px black" }}
               >
@@ -167,13 +167,13 @@ export default function InfoPage() {
 
               {/* Main content */}
               <motion.div
-                className="grid gap-8 sm:gap-16 mt-16 sm:mt-32"
+                className="grid gap-3 sm:gap-4 mt-8 sm:mt-12"
                 variants={containerVariants}
                 initial="initial"
                 whileInView="animate"
                 viewport={{ once: true }}
               >
-                <div className="space-y-8 sm:space-y-12 text-lg sm:text-2xl text-zinc-400 leading-relaxed">
+                <div className="space-y-2 sm:space-y-3 text-lg sm:text-xl text-zinc-400 leading-relaxed">
                   <p className="max-w-4xl">
                     Hi there! 👋 I&apos;m a passionate Software Developer currently working at Automation Edge Technologies primarily focused on building scalable web solutions.
                   </p>
@@ -193,7 +193,7 @@ export default function InfoPage() {
                     — because who doesn&apos;t love a good laugh? 😊
                   </p>
 
-                  <p className="text-2xl sm:text-3xl font-light text-zinc-300">
+                  <p className="text-lg sm:text-xl font-light text-zinc-300 pt-2">
                     - - - Thanks for stopping by!
                   </p>
                 </div>
